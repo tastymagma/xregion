@@ -176,12 +176,12 @@ get_win_region(xcb_connection_t *c, win_region_t *region)
 							1, (xcb_rectangle_t[]){{x, y, w, h}});
 				xcb_flush(c);
 			case XCB_BUTTON_PRESS:
+				ev_bp = (xcb_button_press_event_t*) ev;
 				if (!sx) {
-					ev_bp = (xcb_button_press_event_t*) ev;
 					sx = ev_bp->event_x;
 					sy = ev_bp->event_y;
 				}
-				region->win = ((xcb_button_press_event_t*) ev)->child;
+				region->win = ev_bp->child;
 				break;
 			case XCB_BUTTON_RELEASE:
 				xcb_poly_rectangle(c, scr->root, gc,
@@ -190,8 +190,8 @@ get_win_region(xcb_connection_t *c, win_region_t *region)
 
 				region->x = x;
 				region->y = y;
-				region->h = w;
-				region->w = h;
+				region->w = w;
+				region->h = h;
 
 				finished = true;
 			default:
