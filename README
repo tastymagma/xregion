@@ -1,0 +1,22 @@
+# xregion
+
+## Intro
+
+A very simple tool for X, which lets you select a region of the screen
+in a way similar to "scrot -s", and then prints out its coordinates.
+
+## Usage
+
+xregion [-h] [-g] [-w] [-a]
+
+-a print short help
+-g print coordinates as XxY+W+H
+-w force using selected window instead of region
+-a use absolute coordinates instead of width and height ```
+
+see examples/ for sample applications
+
+## Install/Uninstall
+
+  # make install
+  # make uninstall
